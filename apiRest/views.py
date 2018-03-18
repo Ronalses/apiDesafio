@@ -1,6 +1,8 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, permissions, routers
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+
+from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
 
 from apiRest.models import User, Task
 from apiRest.serializers import UserSerializer, TaskSerializer
@@ -9,11 +11,13 @@ from apiRest.serializers import UserSerializer, TaskSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class TaskViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
