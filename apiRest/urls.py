@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import renderers
+from rest_framework.authtoken import views
 
 from apiRest.views import UserViewSet, TaskViewSet
 
@@ -27,6 +28,7 @@ todo_detail = TaskViewSet.as_view({
 })
 
 urlpatterns = format_suffix_patterns([
+    url(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^$', user_list, name='user_list'),
     url(r'^users/$', user_list, name='user_list'),
     url(r'^users/$', user_detail, name='user_detail'),
