@@ -31,6 +31,11 @@ $ python manage.py runserver
   - GET
   - PUT
 
+Status of the Task = {  
+  0:Pending,  
+  1:In process,  
+  2:Finished  
+}  
 The api has Auth Token and oAuth Authentication.
 see the branch tokenAuthentication and oauth.
 
