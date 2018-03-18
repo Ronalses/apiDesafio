@@ -24,26 +24,25 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     def createTask(self, request, user_id):
         user = get_object_or_404(User, pk=user_id)
-        task = null
-        if not(request.data['title']):
+        if not (request.data['title']):
+            task = Task(status=request.data['status'], user=user)
+        else:
             task = Task(title=request.data['title'],
-                    status=request.data['status'], user=user)    
-        task = Task(title=request.data['title'],
                     status=request.data['status'], user=user)
         task.save()
         serializer_class = TaskSerializer(task)
         return Response(serializer_class.data)
 
-    def tasksByUser_detail(self, request, user_id, pk):
+    def tasksByUser_detail(self, request, user_id, identifier):
         tasks = get_object_or_404(User, pk=user_id).task_set.all()
-        task = get_object_or_404(tasks, pk=pk)
+        task = get_object_or_404(tasks, identifier=identifier)
 
         serializer_class = TaskSerializer(task)
         return Response(serializer_class.data)
 
-    def updateTask(self, request, user_id, pk):
+    def updateTask(self, request, user_id, identifier):
         tasks = get_object_or_404(User, pk=user_id).task_set.all()
-        task = get_object_or_404(tasks, pk=pk)
+        task = get_object_or_404(tasks, identifier=identifier)
         task.status = request.data['status']
         task.save()
         serializer_class = TaskSerializer(task)

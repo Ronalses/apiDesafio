@@ -31,5 +31,5 @@ urlpatterns = format_suffix_patterns([
     url(r'^users/$', user_list, name='user_list'),
     url(r'^users/$', user_detail, name='user_detail'),
     url(r'^(?P<user_id>[0-9]+)/todo-list/$', todo_list, name='todo_list'),
-    url(r'^(?P<user_id>[0-9]+)/todo-list/(?P<pk>[0-9]+)/$', todo_detail, name='todo_detail')
+    url(r'^(?P<user_id>[0-9]+)/todo-list/(?P<identifier>.+)/$', todo_detail, name='todo_detail')
 ])
