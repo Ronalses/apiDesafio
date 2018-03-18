@@ -5,7 +5,7 @@ $ mkdir tutorial
 $ cd tutorial
 
 - Create a virtualenv to isolate our package dependencies locally  
-$ virtualenv env  
+$ virtualenv -p python3 env
 $ source env/bin/activate  
 $ git clone repository.  
 $ cd repository.
