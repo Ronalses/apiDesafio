@@ -43,6 +43,8 @@ see the branch tokenAuthentication and oauth.
   $ python manage.py migrate.
 - Create User
   - python manage.py createsuperuser --email admin@example.com --username admin
+- run project  
+  $ python manage.py runserver  
 - Get Token
   - curl -d '{"username":"admin", "password":"adminadmin"}' -H "Content-Type: application/json" -X POST http://localhost:8000/api/token-auth/  
   {"token":"15914b435918b273c5cfaa2a898d2f761ade719b"}
