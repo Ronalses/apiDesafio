@@ -28,7 +28,7 @@ todo_detail = TaskViewSet.as_view({
 })
 
 urlpatterns = format_suffix_patterns([
-    url(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^token-auth/', views.obtain_auth_token),
     url(r'^$', user_list, name='user_list'),
     url(r'^users/$', user_list, name='user_list'),
     url(r'^users/$', user_detail, name='user_detail'),
