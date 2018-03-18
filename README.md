@@ -43,10 +43,13 @@ see the branch tokenAuthentication and oauth.
 
 - Create user
   $ python manage.py createsuperuser --email admin@example.com --username admin.
+
+- run project  
+  $ python manage.py runserver 
 - Register an application  
   go to http://localhost:8000/admin
 
-  $ http://localhost:8000/api/applications/  
+  $ http://localhost:8000/o/applications/  
 
   Click on the link to create a new application and fill the form with the following data:  
   Name: just a name of your choice  
