@@ -5,6 +5,10 @@ from rest_framework.authtoken import views
 
 from apiRest.views import UserViewSet, TaskViewSet
 
+index_list = UserViewSet.as_view({
+    'get': 'list',
+})
+
 user_list = UserViewSet.as_view({
     'get': 'list',
     'post': 'create'
@@ -29,7 +33,7 @@ todo_detail = TaskViewSet.as_view({
 
 urlpatterns = format_suffix_patterns([
     url(r'^token-auth/', views.obtain_auth_token),
-    url(r'^$', user_list, name='user_list'),
+    url(r'^$', index_list, name='index_list'),
     url(r'^users/$', user_list, name='user_list'),
     url(r'^users/$', user_detail, name='user_detail'),
     url(r'^(?P<user_id>[0-9]+)/todo-list/$', todo_list, name='todo_list'),
